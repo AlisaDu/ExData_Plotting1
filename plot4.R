@@ -32,29 +32,20 @@ new.plot <- function (filename){
     png(filename = filename, width = 480, height = 480, units= "px")
 }
 
-# constructing first plot
-
-build.plot1 <- function(){
- with(data, hist(Global_active_power, 
-                          col = "red",
-                          main = "Global Active Power", 
-                          xlab = gap.label))
-}
 
 
 # constructing second plot
 build.plot2 <- function(){
- with(data, plot(Timestamp, 
-                Global_active_power,
-                ylab= gap.label,
-                xlab= "",
-                type = "n"))
- with(data, lines(Timestamp, 
-                 Global_active_power, 
-                 type = "l", 
-                 lty = 1))
+    with(data, plot(Timestamp, 
+                    Global_active_power,
+                    ylab= gap.label,
+                    xlab= "",
+                    type = "n"))
+    with(data, lines(Timestamp, 
+                     Global_active_power, 
+                     type = "l", 
+                     lty = 1))
 }
-
 
 # constructing third plot
 build.plot3 <- function(legend.border){
@@ -113,18 +104,6 @@ build.plot4.bottomright <- function(){
 }
 
 
-new.plot("plot1.png")  
-build.plot1()
-dev.off()
-
-
-new.plot("plot2.png")  
-build.plot2()
-dev.off()
-
-new.plot("plot3.png")  
-build.plot3("o")
-dev.off()
 
 # constructing fourth plot
 new.plot("plot4.png")

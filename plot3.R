@@ -34,28 +34,6 @@ new.plot <- function (filename){
 
 # constructing first plot
 
-build.plot1 <- function(){
- with(data, hist(Global_active_power, 
-                          col = "red",
-                          main = "Global Active Power", 
-                          xlab = gap.label))
-}
-
-
-# constructing second plot
-build.plot2 <- function(){
- with(data, plot(Timestamp, 
-                Global_active_power,
-                ylab= gap.label,
-                xlab= "",
-                type = "n"))
- with(data, lines(Timestamp, 
-                 Global_active_power, 
-                 type = "l", 
-                 lty = 1))
-}
-
-
 # constructing third plot
 build.plot3 <- function(legend.border){
     with(data, plot(Timestamp,
@@ -85,52 +63,6 @@ build.plot3 <- function(legend.border){
            col = c("black", "red", "blue") )     
 }
 
-build.plot4.topright <- function(){
-    with(data,
-         plot(Timestamp,
-              Voltage, 
-              type = "n",
-              ylab = "Voltage",
-              xlab = "datetime")) 
-    with(data, lines(Timestamp, 
-                     Voltage, 
-                     type = "l", 
-                     lty = 1, 
-                     col= "black"))
-}
-
-build.plot4.bottomright <- function(){
-    with(data,
-         plot(Timestamp,
-              Global_reactive_power, 
-              type = "n",
-              xlab = "datetime")) 
-    with(data, lines(Timestamp, 
-                     Global_reactive_power, 
-                     type = "l", 
-                     lty = 1, 
-                     col= "black"))
-}
-
-
-new.plot("plot1.png")  
-build.plot1()
-dev.off()
-
-
-new.plot("plot2.png")  
-build.plot2()
-dev.off()
-
 new.plot("plot3.png")  
 build.plot3("o")
-dev.off()
-
-# constructing fourth plot
-new.plot("plot4.png")
-par(mfcol = c(2,2))
-build.plot2()
-build.plot3("n")
-build.plot4.topright()
-build.plot4.bottomright()
 dev.off()
